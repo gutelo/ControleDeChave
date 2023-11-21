@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="expires" content="0"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <title>Controle de Chave - Retirada</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-image: url(imagens/biblioteca2.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .box {
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 15px;
+                border-radius: 15px;
+                border: 3px solid #180e02;
+                width: 40%;
+            }
+            .boxControle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+            .controle {
+                background-color: #231709;
+                padding: 10px;
+                border-radius: 8px;
+                width: 100%;
+                text-align: center;
+            }
+            fieldset {
+                border: none;
+                border-radius: 5px;
+            }
+            .inputBox {
+                position: relative;
+            }
+            .inputUser {
+                background: none;
+                border: none;
+                border-bottom: 1px solid white;
+                outline: none;
+                color: white;
+                font-size: 15px;
+                width: 100%;
+                letter-spacing: 2px;
+            }
+            .labelInput {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                pointer-events: none;
+                transition: .5s;
+            }
+            .inputUser:focus ~ .labelInput,
+            .inputUser:valid ~ .labelInput {
+                top: -20px;
+                font-size: 13px;
+                color: #bda077;
+            }
+            #data {
+                border: none;
+                padding: 5px;
+                border-radius: 10px;
+                outline: none;
+                font-size: 15px;
+            }
+            #horaRetirada {
+                border: none;
+                padding: 3px;
+                border-radius: 10px;
+                outline: none;
+                font-size: 15px;
+            }
+            #devolucao {
+                border: none;
+                padding: 3px;
+                border-radius: 10px;
+                outline: none;
+                font-size: 15px;
+            }
+            #submit {
+                background-image: radial-gradient(#231709, #362511);
+                width: 100%;
+                border: none;
+                padding: 15px;
+                color: white;
+                font-size: 15px;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            #submit:hover {
+                background-image: radial-gradient(#2b1e0f, #412d16);
+            }
+            .andar-nome {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .andar {
+                width: 100px;
+                position: absolute;
+                left: 0px;
+            }
+            #andarr {
+                padding: 3px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                font-size: 15px;
+            }
+            .nome {
+                width: 420px;
+                position: absolute;
+                right: 0px;
+            }
+            .saida-seguranca {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .retirada {
+                position: absolute;
+                left: 0px;
+            }
+            .seguranca1 {
+                width: 350px;
+                position: absolute;
+                right: 0px;
+            }
+            .devolucao-seguranca {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .devolucao {
+                position: absolute;
+                left: 0px;
+            }
+            .seguranca2 {
+                width: 350px;
+                position: absolute;
+                right: 0px;
+            }
+            .uni {
+                display: flex;
+                justify-content: left;
+            }
+            img {
+                width: 20%;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="uni">
+            <img src="imagens/logo_UNI.png" alt="UNIESP">
+
+        </div>
+        <div class="box">
+            <form action="gravarRetirada.php" method="post">
+                <fieldset>
+                    <div class="boxControle">
+                        <div class="controle"><b>Controle de Chave - Retirada</b></div>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="data">Data:&ensp;</label>
+                        <input type="date" name="dataRetirada" id="data" required>
+                    </div>
+                    <br><br>
+                    <div class="andar-nome">
+                        <div class="andar">
+                        <label for="andar">Andar:&ensp;</label>
+                        <select name="andar" id="andarr">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                        </div>
+                        <div class="nome">
+                        <input type="text" name="nome" maxlength="15"
+                        class="inputUser"  autocomplete="on" required>
+                        <label for="nome" class="labelInput">Retirado por</label>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="saida-seguranca">
+                        <div class="retirada">
+                        <label for="horaRetirada">Retirada:&ensp;</label>
+                        <input type="time" name="horaRetirada" id="horaRetirada" required>
+                        </div>
+                        <div class="seguranca1">
+                        <input type="text" name="seguranca1" id="seguranca1" 
+                        class="inputUser" autocomplete="on" required>
+                        <label for="seguranca1" class="labelInput">Segurança</label>
+                        </div>
+                    </div>
+                    <br><br>
+                    <input type="submit" id="submit">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
